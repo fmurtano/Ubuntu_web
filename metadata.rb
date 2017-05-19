@@ -1,9 +1,9 @@
 name 'Ubuntu_web'
-maintainer 'The Authors'
-maintainer_email 'you@example.com'
+maintainer 'Ferdy M'
+maintainer_email 'fmurtano@example.com'
 license 'All Rights Reserved'
-description 'Installs/Configures Ubuntu_web'
-long_description 'Installs/Configures Ubuntu_web'
+description 'Installs/Configures apache, ufw, and redirect http to https in Ubuntu OS ver 14 and above'
+long_description 'Installs/Configures apache, ufw, and redirect http to https in Ubuntu OS ver 14 and above'
 version '0.1.0'
 chef_version '>= 12.1' if respond_to?(:chef_version)
 
