@@ -34,17 +34,17 @@ execute "enable ssl rewrite" do
   command "a2enmod ssl && a2enmod rewrite"
 end
 
-execute "ssl" do
+execute "create key ssl" do
   command "mkdir /etc/apache2/ssl && openssl genrsa -out /etc/apache2/ssl/ca.key 2048"
   not_if {Dir.exist?('/etc/apache2/ssl')}
 end
 
-execute "copy ssl file" do
+execute "create csr file" do
   command "openssl req -nodes -new -key /etc/apache2/ssl/ca.key -out /etc/apache2/ssl/ca.csr -subj '/C=US/ST=Denial/L=Springfield/O=Dis/CN=www.example.com'"
   only_if { File.exist?('/etc/apache2/ssl/ca.key') }
 end
 
-execute "crt file" do
+execute "creata crt file" do
   command "openssl x509 -req -days 365 -in /etc/apache2/ssl/ca.csr -signkey /etc/apache2/ssl/ca.key -out /etc/apache2/ssl/ca.crt"
   only_if {  File.exist?('/etc/apache2/ssl/ca.csr') }
 end
