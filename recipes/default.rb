@@ -98,3 +98,7 @@ NameVirtualHost *:443
   notifies :run, "execute[curl]"
   notifies :run, "execute[test]"
 end
+
+describe port 443 do
+  it { should be_listening }
+end
